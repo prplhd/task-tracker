@@ -1,0 +1,17 @@
+name: task-tracker-dev
+
+services:
+  postgresql:
+    image: postgres:16
+    ports:
+      - "127.0.0.1:${DB_EXTERNAL_PORT}:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - task_tracker_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  task_tracker_postgres_data:
+    name: task_tracker_postgres_data
