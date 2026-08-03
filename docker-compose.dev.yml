@@ -4,14 +4,14 @@ services:
   postgresql:
     image: postgres:16
     ports:
-      - "127.0.0.1:${DB_EXTERNAL_PORT}:5432"
+      - "127.0.0.1:5432:5432"
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: task-tracker
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: password
     volumes:
-      - task_tracker_postgres_data:/var/lib/postgresql/data
+      - task_tracker_postgres_dev_data:/var/lib/postgresql/data
 
 volumes:
-  task_tracker_postgres_data:
-    name: task_tracker_postgres_data
+  task_tracker_postgres_dev_data:
+    name: task_tracker_postgres_dev_data
