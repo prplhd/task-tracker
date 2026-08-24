@@ -47,10 +47,11 @@ services:
         condition: service_started
 
   email-sender:
-    image: pnrplahaed/task-tracker-email-sender:1.0
+    image: pnrplahaed/task-tracker-email-sender:1.1
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: prod
+      MAIL_FROM: ${MAIL_FROM:?MAIL_FROM must be set}
       SMTP_HOST: ${SMTP_HOST:?SMTP_HOST must be set}
       SMTP_PORT: ${SMTP_PORT:?SMTP_PORT must be set}
       SMTP_USERNAME: ${SMTP_USERNAME:?SMTP_USERNAME must be set}
