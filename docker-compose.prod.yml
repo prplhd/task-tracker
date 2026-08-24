@@ -17,7 +17,7 @@ services:
       start_period: 10s
 
   backend:
-    image: pnrplahaed/task-tracker-backend:1.2
+    image: pnrplahaed/task-tracker-backend:latest
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: prod
@@ -38,7 +38,7 @@ services:
       - ./logs/backend:/app/logs
 
   frontend:
-    image: pnrplahaed/task-tracker-frontend:1.0
+    image: pnrplahaed/task-tracker-frontend:latest
     restart: unless-stopped
     ports:
       - "80:80"
@@ -47,7 +47,7 @@ services:
         condition: service_started
 
   email-sender:
-    image: pnrplahaed/task-tracker-email-sender:1.1
+    image: pnrplahaed/task-tracker-email-sender:latest
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: prod
@@ -62,7 +62,7 @@ services:
         condition: service_healthy
 
   scheduler:
-    image: pnrplahaed/task-tracker-scheduler:1.0
+    image: pnrplahaed/task-tracker-scheduler:latest
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: prod
@@ -76,7 +76,7 @@ services:
         condition: service_started
 
   summarization:
-    image: pnrplahaed/task-tracker-summarization:1.0
+    image: pnrplahaed/task-tracker-summarization:latest
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: prod
